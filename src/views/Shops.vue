@@ -1,0 +1,195 @@
+<template>
+  <div>
+    <header>
+      <HeaderAuth />
+      <div class="search">
+        <div class="area">
+          <select name="" id="" v-model="keylocation">
+            <option value="" selected>All area</option>
+            <option v-for="(shops, index) in getLocations" :key="index">{{shops}}</option>
+          </select>
+        </div>
+        <div class="genre">
+          <select name="" id="" v-model="keygenre">
+            <option value="" selected>All genre</option>
+            <option v-for="(shops, index) in getGenres" :key="index">{{shops}}</option>
+          </select>
+        </div>
+        <div class="name">
+          <input placeholder="Search ..." class="searchInput" type="text" v-model="keyword">
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="cards">
+        <Shopcard v-for="(value, index) in filteredShops" :key="index" :shop="filteredShops[index]" :like="likes"/>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import HeaderAuth from "../components/HeaderAuth";
+import Shopcard from "../components/Shopcard.vue";
+import axios from "axios";
+export default {
+  data() {
+    return {
+      keyword: "",
+      keylocation: "",
+      keygenre: "",
+      shops: [],
+      likes: []
+    };
+  },
+  methods: {
+    //店舗情報を取得する関数
+    async getShops() {
+      // let data = [];
+      const shops = await axios.get(
+        "http://127.0.0.1:8000/api/shops"
+      );
+      // for (let i =0; i < shops.data.data.length; i++) {
+      //   await axios
+      //     .get(
+      //       "http://127.0.0.1:8000/api/shops/" + shops.data.data[i].id
+      //     )
+      //     .then((response) => {
+      //       data.push(response.data);
+      //     });
+      // }
+      // this.shops = data;
+      this.shops = shops.data.data;
+      // this.likes = shops.data.likedata;
+      console.log(this.shops);
+      // console.log(this.likes);
+    },
+    async makeLikes() {
+      if(this.$store.state.auth === true) {
+        for (const i in this.shops) {
+          const like = this.shops[i].like;
+          for(const j in like) {
+            if(Number(like[j].user_id) === this.$store.state.user.id) {
+              this.likes.push(like[j]);
+            }
+          }
+        }
+        console.log(this.likes);
+      }
+    }
+  },
+  //インスタンス生成時に店舗情報を取得する関数getShops()を実行する
+  async created() {
+    await this.getShops();
+    await this.makeLikes();
+  },
+  components: {
+    HeaderAuth,
+    Shopcard
+  },
+  computed: {
+    filteredShops() {
+      const shopsArray = [];
+      for (const i in this.shops) {
+        const shop = this.shops[i];
+        if (shop.location.prefecture.indexOf(this.keylocation) !== -1 && shop.genre.name.indexOf(this.keygenre) !== -1 && shop.shopName.indexOf(this.keyword) !== -1) {
+          shopsArray.push(shop);
+        }
+      }
+      // console.log(shopsArray);
+      return shopsArray;
+    },
+    getLocations() {
+      const locationArray = [];
+      for (const i in this.shops) {
+        const location = this.shops[i].location.prefecture;
+        if(locationArray.indexOf(location) === -1){
+          locationArray.push(location);
+        }
+      }
+      // console.log(locationArray);
+      return locationArray;
+    },
+    getGenres() {
+      const genreArray = [];
+      for (const i in this.shops) {
+        const genre = this.shops[i].genre.name;
+        if(genreArray.indexOf(genre) === -1){
+          genreArray.push(genre);
+        }
+      }
+      // console.log(genreArray);
+      return genreArray;
+    },
+  },
+}
+</script>
+
+<style scoped>
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  display: flex;
+  background-color: white;
+  height: 36px;
+  width: 42vw;
+  margin-top: 40px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #9b9b9b;
+  align-items: center;
+  margin-right: 80px;
+}
+
+.area {
+  display: flex;
+  height: 80%;
+  border-right: 1px solid #9b9b9b;
+}
+
+select {
+  border: none;
+  font-size: 10px;
+  height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.genre {
+  display: flex;
+  height: 80%;
+  border-right: 1px solid #9b9b9b;
+}
+
+/* .search p {
+  font-size: 12px;
+  margin: auto;
+  padding-left: 10px;
+} */
+
+.name {
+  height: 100%;
+}
+
+.searchInput {
+  border: none;
+  font-size: 12px;
+  padding-left: 10px;
+  height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  flex-grow: 10;
+}
+
+.container {
+  margin: 20px 0 0 80px;
+}
+
+.cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+</style>
