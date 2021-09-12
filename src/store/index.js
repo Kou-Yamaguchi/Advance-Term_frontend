@@ -30,14 +30,14 @@ export default new Vuex.Store({
   actions: {
     async login({ commit }, { email, password }) {
       const responseLogin = await axios.post(
-        "http://127.0.0.1:8000/api/login",
+        "http://rocky-wave-13285.herokuapp.com/api/login",
         {
           email: email,
           password: password,
         }
       );
       const responseUser = await axios.get(
-        "http://127.0.0.1:8000/api/user",
+        "http://rocky-wave-13285.herokuapp.com/api/user",
         {
           params: {
             email: email,
@@ -49,15 +49,13 @@ export default new Vuex.Store({
       if (this.state.auth == true) {
         router.replace("/mypage");
       }
-      // router.replace("/mypage");
     },
     async seeDetail(context, data) {
-      // let data = await axios.get();
       await context.commit("shop", data);
     },
     logout({ commit }) {
       axios
-        .post("http://127.0.0.1:8000/api/logout", {
+        .post("http://rocky-wave-13285.herokuapp.com/api/logout", {
           auth: this.state.auth,
         })
         .then((response) => {

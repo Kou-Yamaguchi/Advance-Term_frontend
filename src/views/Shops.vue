@@ -45,24 +45,11 @@ export default {
   methods: {
     //店舗情報を取得する関数
     async getShops() {
-      // let data = [];
       const shops = await axios.get(
-        "http://127.0.0.1:8000/api/shops"
+        "http://rocky-wave-13285.herokuapp.com/api/shops"
       );
-      // for (let i =0; i < shops.data.data.length; i++) {
-      //   await axios
-      //     .get(
-      //       "http://127.0.0.1:8000/api/shops/" + shops.data.data[i].id
-      //     )
-      //     .then((response) => {
-      //       data.push(response.data);
-      //     });
-      // }
-      // this.shops = data;
       this.shops = shops.data.data;
-      // this.likes = shops.data.likedata;
       console.log(this.shops);
-      // console.log(this.likes);
     },
     async makeLikes() {
       if(this.$store.state.auth === true) {
@@ -96,7 +83,6 @@ export default {
           shopsArray.push(shop);
         }
       }
-      // console.log(shopsArray);
       return shopsArray;
     },
     getLocations() {
@@ -107,7 +93,6 @@ export default {
           locationArray.push(location);
         }
       }
-      // console.log(locationArray);
       return locationArray;
     },
     getGenres() {
@@ -118,7 +103,6 @@ export default {
           genreArray.push(genre);
         }
       }
-      // console.log(genreArray);
       return genreArray;
     },
   },

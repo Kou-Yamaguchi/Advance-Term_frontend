@@ -29,6 +29,7 @@ export default {
   align-items: center;
   margin-top: 40px;
   margin-left: 80px;
+  cursor: pointer;
 }
 
 .headerLeft p {

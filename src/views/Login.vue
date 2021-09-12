@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     auth() {
-      axios.post("http://127.0.0.1:8000/api/login", {
+      axios.post("http://rocky-wave-13285.herokuapp.com/api/login", {
         email: this.email,
         password: this.password
       });

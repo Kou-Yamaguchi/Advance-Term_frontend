@@ -2,6 +2,7 @@
   <div class="home">
     <div class="headerFlex">
       <HeaderAuth />
+      <button @click="logout">ログアウト</button>
     </div>
     <div class="container">
       <div class="leftContent">
@@ -9,10 +10,9 @@
         <div class="reservations">
           <Reservationcard v-for="(reservaions, index) in reservations" :key="index" :reservation="reservations[index]" :number="index" />
         </div>
-        <button @click="logout">logout</button>
       </div>
       <div class="rightContent">
-        <h1>testさん</h1>
+        <h1>{{ this.$store.state.user.name }}さん</h1>
         <h2>お気に入り店舗</h2>
         <div class="likes">
           <Shopcard v-for="(shops, index) in shops" :key="index" :shop="shops" :like="likes" />
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     async reservation() {
-      const reservations = await axios.get("http://127.0.0.1:8000/api/reservations");
+      const reservations = await axios.get("http://rocky-wave-13285.herokuapp.com/api/reservations");
       for (const i in reservations.data.data) {
         const reservation = reservations.data.data[i];
         if(Number(reservation.user_id) === this.$store.state.user.id) {
@@ -51,7 +51,7 @@ export default {
     },
     async getShops() {
       const shops = await axios.get(
-        "http://127.0.0.1:8000/api/shops"
+        "http://rocky-wave-13285.herokuapp.com/api/shops"
       );
       for (const i in shops.data.data) {
         const shop = shops.data.data[i];
@@ -65,7 +65,7 @@ export default {
       console.log(this.likes);
     },
     logout() {
-      axios.post("http://127.0.0.1:8000/api/logout")
+      axios.post("http://rocky-wave-13285.herokuapp.com/api/logout")
       this.$store.dispatch("logout");
     }
   },
@@ -82,6 +82,25 @@ export default {
 </script>
 
 <style scoped>
+.headerFlex {
+  display: flex;
+  justify-content: space-between;
+}
+.headerFlex button {
+  margin-top: 40px;
+  margin-right: 80px;
+  color: #305dff;
+  background-color: white;
+  border: 2px solid #305dff;
+  border-radius: 5px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+.headerFlex button:hover {
+  background-color: #305dff;
+  color: white;
+  transition: 0.5s;
+}
 .container {
   display: flex;
   justify-content: space-between;
@@ -98,7 +117,6 @@ export default {
 }
 .reservations {
   width: 30vw;
-  /* margin: 0 10vw; */
 }
 .btns img {
   height: 21px;

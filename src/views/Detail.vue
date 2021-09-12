@@ -72,7 +72,7 @@ export default {
     addReservation() {
       if(this.date != "" && this.time != "" && this.number != "") {
         axios
-          .post("http://127.0.0.1:8000/api/reservations", {
+          .post("http://rocky-wave-13285.herokuapp.com/api/reservations", {
             shop_id: this.$store.state.shop.data.id,
             user_id: this.$store.state.user.id,
             date: this.date,

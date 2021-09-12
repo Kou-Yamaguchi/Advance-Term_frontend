@@ -37,7 +37,7 @@ export default {
   methods: {
     del() {
       axios
-        .delete("http://127.0.0.1:8000/api/reservations/" + this.reservation.id)
+        .delete("http://rocky-wave-13285.herokuapp.com/api/reservations/" + this.reservation.id)
         .then((response) => {
           console.log(response);
           this.$router.go({
@@ -76,6 +76,13 @@ export default {
   color: white;
   border-radius: 130px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.reservationCard button:hover {
+  background-color: white;
+  color: #305dff;
+  transition: 0.5s;
 }
 
 .timeLogo {

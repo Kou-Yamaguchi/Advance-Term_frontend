@@ -32,7 +32,7 @@ export default {
       if(result) {
         this.like.forEach((element) => {
           if(Number(element.shop_id) == this.shop.id) {
-            axios.delete("http://127.0.0.1:8000/api/like", {
+            axios.delete("http://rocky-wave-13285.herokuapp.com/api/like", {
               data: {
                 shop_id: this.shop.id,
                 user_id: this.$store.state.user.id,
@@ -48,7 +48,7 @@ export default {
         });
       } else {
         axios
-          .post("http://127.0.0.1:8000/api/like", {
+          .post("http://rocky-wave-13285.herokuapp.com/api/like", {
             shop_id: this.shop.id,
             user_id: this.$store.state.user.id,
           })
@@ -126,6 +126,7 @@ h2 {
 
 button {
   border: none;
+  cursor: pointer;
 }
 
 .btns button:nth-child(1) {
@@ -134,14 +135,15 @@ button {
   font-size: 11px;
   border-radius: 5px;
   padding: 5px 15px;
-  /* margin-right: 50px; */
+}
+
+.btns button:nth-child(1):hover {
+  background-color: #196dce;
 }
 
 .btns img {
   width: 10px;
-  /* background-color: red; */
   color: blue;
-
 }
 
 .heart {

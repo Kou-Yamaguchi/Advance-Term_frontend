@@ -34,7 +34,7 @@ export default {
   methods: {
     auth() {
       axios
-        .post("http://127.0.0.1:8000/api/register", {
+        .post("http://rocky-wave-13285.herokuapp.com/api/register", {
           name: this.name,
           email: this.email,
           password: this.password
@@ -58,7 +58,6 @@ export default {
 <style scoped>
 .card {
   margin: 100px auto;
-  /* padding: 0 20px; */
   width: 350px;
   background: #305dff;
   border-radius: 5px;
