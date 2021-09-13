@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     async reservation() {
-      const reservations = await axios.get("http://rocky-wave-13285.herokuapp.com/api/reservations");
+      const reservations = await axios.get("https://rocky-wave-13285.herokuapp.com/api/reservations");
       for (const i in reservations.data.data) {
         const reservation = reservations.data.data[i];
         if(Number(reservation.user_id) === this.$store.state.user.id) {
@@ -51,7 +51,7 @@ export default {
     },
     async getShops() {
       const shops = await axios.get(
-        "http://rocky-wave-13285.herokuapp.com/api/shops"
+        "https://rocky-wave-13285.herokuapp.com/api/shops"
       );
       for (const i in shops.data.data) {
         const shop = shops.data.data[i];
@@ -65,7 +65,7 @@ export default {
       console.log(this.likes);
     },
     logout() {
-      axios.post("http://rocky-wave-13285.herokuapp.com/api/logout")
+      axios.post("https://rocky-wave-13285.herokuapp.com/api/logout")
       this.$store.dispatch("logout");
     }
   },

@@ -30,14 +30,14 @@ export default new Vuex.Store({
   actions: {
     async login({ commit }, { email, password }) {
       const responseLogin = await axios.post(
-        "http://rocky-wave-13285.herokuapp.com/api/login",
+        "https://rocky-wave-13285.herokuapp.com/api/login",
         {
           email: email,
           password: password,
         }
       );
       const responseUser = await axios.get(
-        "http://rocky-wave-13285.herokuapp.com/api/user",
+        "https://rocky-wave-13285.herokuapp.com/api/user",
         {
           params: {
             email: email,
@@ -55,7 +55,7 @@ export default new Vuex.Store({
     },
     logout({ commit }) {
       axios
-        .post("http://rocky-wave-13285.herokuapp.com/api/logout", {
+        .post("https://rocky-wave-13285.herokuapp.com/api/logout", {
           auth: this.state.auth,
         })
         .then((response) => {

@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     auth() {
-      axios.post("http://rocky-wave-13285.herokuapp.com/api/login", {
+      axios.post("https://rocky-wave-13285.herokuapp.com/api/login", {
         email: this.email,
         password: this.password
       });

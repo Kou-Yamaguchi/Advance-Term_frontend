@@ -32,7 +32,7 @@ export default {
       if(result) {
         this.like.forEach((element) => {
           if(Number(element.shop_id) == this.shop.id) {
-            axios.delete("http://rocky-wave-13285.herokuapp.com/api/like", {
+            axios.delete("https://rocky-wave-13285.herokuapp.com/api/like", {
               data: {
                 shop_id: this.shop.id,
                 user_id: this.$store.state.user.id,
@@ -48,7 +48,7 @@ export default {
         });
       } else {
         axios
-          .post("http://rocky-wave-13285.herokuapp.com/api/like", {
+          .post("https://rocky-wave-13285.herokuapp.com/api/like", {
             shop_id: this.shop.id,
             user_id: this.$store.state.user.id,
           })

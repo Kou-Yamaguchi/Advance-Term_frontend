@@ -37,7 +37,7 @@ export default {
   methods: {
     del() {
       axios
-        .delete("http://rocky-wave-13285.herokuapp.com/api/reservations/" + this.reservation.id)
+        .delete("https://rocky-wave-13285.herokuapp.com/api/reservations/" + this.reservation.id)
         .then((response) => {
           console.log(response);
           this.$router.go({
