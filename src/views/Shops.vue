@@ -46,7 +46,7 @@ export default {
     //店舗情報を取得する関数
     async getShops() {
       const shops = await axios.get(
-        "http://rocky-wave-13285.herokuapp.com/api/shops"
+        "http://rocky-wave-13285.herokuapp.comapi/shops"
       );
       this.shops = shops.data.data;
       console.log(this.shops);
