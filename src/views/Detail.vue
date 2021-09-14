@@ -70,24 +70,28 @@ export default {
   },
   methods: {
     addReservation() {
-      if(this.date != "" && this.time != "" && this.number != "") {
-        axios
-          .post("https://rocky-wave-13285.herokuapp.com/api/reservations", {
-            shop_id: this.$store.state.shop.data.id,
-            user_id: this.$store.state.user.id,
-            date: this.date,
-            time: this.time,
-            number: this.number
-          })
-          .then((response) => {
-            console.log(response);
-            this.$router.push('/done');
-          })
-          .catch(error => {
-            alert(error);
-          })
+      if(this.$store.state.auth){
+        if(this.date != "" && this.time != "" && this.number != "") {
+          axios
+            .post("https://rocky-wave-13285.herokuapp.com/api/reservations", {
+              shop_id: this.$store.state.shop.data.id,
+              user_id: this.$store.state.user.id,
+              date: this.date,
+              time: this.time,
+              number: this.number
+            })
+            .then((response) => {
+              console.log(response);
+              this.$router.push('/done');
+            })
+            .catch(error => {
+              alert(error);
+            })
+        } else {
+          window.alert("入力が正しくありません");
+        }
       } else {
-        window.alert("入力が正しくありません");
+        return this.$router.push('/login');
       }
     }
   },
@@ -224,7 +228,7 @@ td {
   cursor: pointer;
 }
 
-.rightContent button {
+.rightContent button:hover {
   background-color: cornflowerblue;
   transition: 0.5s;
 }

@@ -51,5 +51,10 @@ button {
   border: none;
   margin: 0 auto;
   width: 30%;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #196dce;
 }
 </style>
