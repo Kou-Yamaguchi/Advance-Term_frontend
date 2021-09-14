@@ -25,6 +25,9 @@
         <Shopcard v-for="(value, index) in filteredShops" :key="index" :shop="filteredShops[index]" :like="likes"/>
       </div>
     </div>
+    <footer>
+      <button @click="$router.push('/register')">新規登録</button>
+    </footer>
   </div>
 </template>
 
