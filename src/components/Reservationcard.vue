@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <th>Number</th>
-          <td>{{ reservation.number }}人</td>
+          <td>{{ reservation.PersonNumber }}人</td>
         </tr>
       </table>
     </div>
