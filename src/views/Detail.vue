@@ -5,14 +5,14 @@
       <div class="leftContent">
         <div class="leftTop">
           <button @click="$router.push('/')">＜</button>
-          <h1>{{this.$store.state.shop.data.shopName}}</h1>
+          <h1>{{ this.$store.state.shop.data.shopName }}</h1>
         </div>
         <img :src="this.$store.state.shop.data.img_url" alt="">
         <div class="hashtag">
-          <p>#{{$store.state.shop.data.location.prefecture}}</p>
-          <p>#{{$store.state.shop.data.genre.name}}</p>
+          <p>#{{ $store.state.shop.data.location.prefecture }}</p>
+          <p>#{{ $store.state.shop.data.genre.name }}</p>
         </div>
-        <p class="comment">{{this.$store.state.shop.data.comment}}</p>
+        <p class="comment">{{ this.$store.state.shop.data.comment }}</p>
       </div>
     </div>
     <div class="rightContent">
@@ -22,13 +22,11 @@
           <input type="date" v-model="date">
           <select name="" id="" v-model="time">
             <option value="" selected>Time</option>
-            <option value="17:00">17:00</option>
-            <option value="18:00">18:00</option>
+            <option v-for="index in timeList" :key="index">{{ index }}</option>
           </select>
           <select name="" id="" v-model="number">
             <option value="" selected>Number</option>
-            <option value=1>1人</option>
-            <option value=2>2人</option>
+            <option v-for="index in numberList" :key="index">{{ index }}</option>
           </select>
         </div>
         <div class="reservationCard">
@@ -65,7 +63,36 @@ export default {
     return {
       date: "",
       time: "",
-      number: ""
+      number: "",
+      timeList: [
+        "10:00",
+        "10:30",
+        "11:00",
+        "11:30",
+        "12:00",
+        "12:30",
+        "13:00",
+        "13:30",
+        "14:00",
+        "14:30",
+        "15:00",
+        "15:30",
+        "16:00",
+        "16:30",
+        "17:00",
+        "17:30",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00",
+        "21:30",
+      ],
+      numberList: [
+        1,2,3,4,5
+      ]
     };
   },
   methods: {
