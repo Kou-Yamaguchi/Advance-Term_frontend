@@ -27,8 +27,8 @@
           </select>
           <select name="" id="" v-model="number">
             <option value="" selected>Number</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
+            <option value=1>1人</option>
+            <option value=2>2人</option>
           </select>
         </div>
         <div class="reservationCard">
