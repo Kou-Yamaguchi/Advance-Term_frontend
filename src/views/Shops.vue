@@ -26,7 +26,10 @@
       </div>
     </div>
     <footer>
-      <button v-if="this.$store.state.auth" @click="logout">ログアウト</button>
+      <div v-if="this.$store.state.auth" class="btns">
+        <button @click="$router.push('/mypage')">ホームへ</button>
+        <button @click="logout">ログアウト</button>
+      </div>
       <div v-else class="btns">
         <button @click="$router.push('/register')">新規登録</button>
         <button @click="$router.push('/login')">ログイン</button>

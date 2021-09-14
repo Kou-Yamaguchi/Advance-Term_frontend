@@ -86,6 +86,8 @@ export default {
           .catch(error => {
             alert(error);
           })
+      } else {
+        alert("入力が正しくありません");
       }
     }
   },
