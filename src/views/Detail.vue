@@ -87,7 +87,7 @@ export default {
             alert(error);
           })
       } else {
-        alert("入力が正しくありません");
+        window.alert("入力が正しくありません");
       }
     }
   },
