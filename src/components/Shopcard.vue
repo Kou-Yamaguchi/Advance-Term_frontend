@@ -9,7 +9,7 @@
       </div>
       <div class="btns">
         <button @click="transition(shop)">詳しく見る</button>
-        <button @click="fav(shop.id)" class="heart" :class="determinLike"></button>
+        <button @click="fav(shop.id)" class="heart" :class="determinLike" v-if="this.$store.state.auth"></button>
       </div>
     </div>
   </div>

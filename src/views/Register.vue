@@ -13,6 +13,10 @@
           </div>
         </div>
       </div>
+      <div class="btns">
+        <button @click="$router.push('/login')">ログイン</button>
+        <button @click="$router.push('/')">店舗一覧</button>
+      </div>
     </div>
   </div>
 </template>
@@ -57,7 +61,7 @@ export default {
 
 <style scoped>
 .card {
-  margin: 100px auto;
+  margin: 100px auto 50px;
   width: 350px;
   background: #305dff;
   border-radius: 5px;
@@ -71,6 +75,7 @@ export default {
 }
 .form {
   padding: 30px auto;
+  padding-bottom: 20px;
   text-align: center;
   width: 100%;
   background: white;
@@ -89,10 +94,39 @@ export default {
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
+  cursor: pointer;
+}
+.form button:hover {
+  background-color: #196dce;
 }
 .btn {
   margin: 0 auto;
   width: 80%;
   text-align: right;
+}
+.btns button {
+  margin: 0 auto;
+  height: 30px;
+  color: #305dff;
+  background-color: white;
+  border: 2px solid #305dff;
+  border-radius: 5px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+.btns {
+  display: flex;
+  justify-content: space-around;
+}
+.btns button:nth-child(1) {
+  margin-left: 450px;
+}
+.btns button:nth-child(2) {
+  margin-right: 450px;
+}
+.btns button:hover {
+  background-color: #305dff;
+  color: white;
+  transition: 0.5s;
 }
 </style>

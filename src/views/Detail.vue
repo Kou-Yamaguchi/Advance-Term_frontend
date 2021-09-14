@@ -124,6 +124,7 @@ export default {
   color: black;
   border-radius: 5px;
   box-shadow: 1px 1px 5px #9b9b9b;
+  cursor: pointer;
 }
 
 .leftTop h1 {
@@ -178,6 +179,7 @@ select, input {
   border: none;
   border-radius: 5px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 select {
@@ -219,6 +221,12 @@ td {
   border-bottom-right-radius: 5px;
   background-color: #0438FF;
   color: white;
+  cursor: pointer;
+}
+
+.rightContent button {
+  background-color: cornflowerblue;
+  transition: 0.5s;
 }
 
 </style>

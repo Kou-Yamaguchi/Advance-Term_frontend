@@ -153,6 +153,7 @@ select {
   height: 100%;
   margin-left: 10px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .genre {
@@ -189,5 +190,35 @@ select {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btns button {
+  margin-top: 40px;
+  height: 30px;
+  color: #305dff;
+  background-color: white;
+  border: 2px solid #305dff;
+  border-radius: 5px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.btns button:nth-child(1) {
+  margin-left: 300px;
+}
+
+.btns button:nth-child(2) {
+  margin-right: 300px;
+}
+
+.btns button:hover {
+  background-color: #305dff;
+  color: white;
+  transition: 0.5s;
 }
 </style>
