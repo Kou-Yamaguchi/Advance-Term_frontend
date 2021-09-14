@@ -26,7 +26,11 @@
       </div>
     </div>
     <footer>
-      <button @click="$router.push('/register')">新規登録</button>
+      <button v-if="this.$store.state.auth" @click="logout">ログアウト</button>
+      <div v-else class="btns">
+        <button @click="$router.push('/register')">新規登録</button>
+        <button @click="$router.push('/login')">ログイン</button>
+      </div>
     </footer>
   </div>
 </template>
@@ -66,6 +70,10 @@ export default {
         }
         console.log(this.likes);
       }
+    },
+    logout() {
+      axios.post("https://rocky-wave-13285.herokuapp.com/api/logout")
+      this.$store.dispatch("logout");
     }
   },
   //インスタンス生成時に店舗情報を取得する関数getShops()を実行する
