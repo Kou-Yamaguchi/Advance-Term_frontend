@@ -108,6 +108,7 @@ export default {
 .btns {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 50px;
 }
 .btns button:nth-child(1) {
   margin-left: 450px;

@@ -162,12 +162,6 @@ select {
   border-right: 1px solid #9b9b9b;
 }
 
-/* .search p {
-  font-size: 12px;
-  margin: auto;
-  padding-left: 10px;
-} */
-
 .name {
   height: 100%;
 }
@@ -195,6 +189,7 @@ select {
 .btns {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 50px;
 }
 
 .btns button {

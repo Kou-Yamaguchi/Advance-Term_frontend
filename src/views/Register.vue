@@ -37,23 +37,27 @@ export default {
   },
   methods: {
     auth() {
-      axios
-        .post("https://rocky-wave-13285.herokuapp.com/api/register", {
-          name: this.name,
+      if(this.name != "" && this.email != "" && this.password != "") {
+        axios
+          .post("https://rocky-wave-13285.herokuapp.com/api/register", {
+            name: this.name,
+            email: this.email,
+            password: this.password
+          })
+          .then(response => {
+            console.log(response);
+            this.$router.replace("/thanks");
+          })
+          .catch(error => {
+            alert(error);
+          });
+        this.$store.dispatch("login", {
           email: this.email,
           password: this.password
-        })
-        .then(response => {
-          console.log(response);
-          this.$router.replace("/thanks");
-        })
-        .catch(error => {
-          alert(error);
         });
-      this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password
-      });
+      } else {
+        windou.alert('入力が正しくありません')
+      }
     }
   }
 }
@@ -117,6 +121,7 @@ export default {
 .btns {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 50px;
 }
 .btns button:nth-child(1) {
   margin-left: 450px;
