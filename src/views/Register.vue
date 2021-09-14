@@ -56,7 +56,7 @@ export default {
           password: this.password
         });
       } else {
-        windou.alert('入力が正しくありません')
+        windou.alert('入力が正しくありません');
       }
     }
   }
