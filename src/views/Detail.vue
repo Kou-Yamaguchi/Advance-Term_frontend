@@ -96,11 +96,11 @@ export default {
     };
   },
   methods: {
-    rememberInputs() {
-      this.$refs.date.value = this.$store.state.remain.date,
-      this.time = this.$store.state.remain.time,
-      this.number = this.$store.state.remain.number
-    },
+    // rememberInputs() {
+    //   this.$refs.date.value = this.$store.state.remain.date,
+    //   this.time = this.$store.state.remain.time,
+    //   this.number = this.$store.state.remain.number
+    // },
     addReservation() {
       if(this.$store.state.auth){
         if(this.date != "" && this.time != "" && this.number != "") {
@@ -136,8 +136,15 @@ export default {
   components: {
     HeaderAuth
   },
-  async created() {
-    this.rememberInputs()
+  // async created() {
+  //   this.rememberInputs()
+  // },
+  mounted: {
+    rememberInputs() {
+      this.$refs.date.value = this.$store.state.remain.date,
+      this.time = this.$store.state.remain.time,
+      this.number = this.$store.state.remain.number
+    },
   }
 }
 </script>
