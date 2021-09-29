@@ -114,6 +114,7 @@ export default {
             })
             .then((response) => {
               console.log(response);
+              this.$store.commit("forget")
               this.$router.push('/done');
             })
             .catch(error => {
@@ -136,15 +137,10 @@ export default {
   components: {
     HeaderAuth
   },
-  // async created() {
-  //   this.rememberInputs()
-  // },
   mounted() {
-    // rememberInputs() {
-      this.date = this.$store.state.remain.date,
-      this.time = this.$store.state.remain.time,
-      this.number = this.$store.state.remain.number
-    // },
+    this.date = this.$store.state.remain.date,
+    this.time = this.$store.state.remain.time,
+    this.number = this.$store.state.remain.number
   }
 }
 </script>

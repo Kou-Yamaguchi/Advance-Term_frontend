@@ -31,6 +31,11 @@ export default new Vuex.Store({
       state.auth = payload;
     },
   },
+  mutations: {
+    forget() {
+      state.remain = {};
+    }
+  },
   actions: {
     async login({ commit }, { email, password }) {
       const responseLogin = await axios.post(
@@ -65,6 +70,9 @@ export default new Vuex.Store({
     async remain(context, shop_id, date, time, number) {
       await context.commit("remain", shop_id, date, time, number);
     },
+    // async forget(context) {
+    //   await context.commit("remain")
+    // },
     logout({ commit }) {
       axios
         .post("https://rocky-wave-13285.herokuapp.com/api/logout", {
