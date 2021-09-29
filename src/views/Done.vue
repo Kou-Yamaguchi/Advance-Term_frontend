@@ -4,7 +4,7 @@
     <div class="container">
       <div class="card">
         <p>ご予約ありがとうございます</p>
-        <button @click="$router.push('/')">戻る</button>
+        <button @click="$router.push('/mypage')">戻る</button>
       </div>
     </div>
   </div>
