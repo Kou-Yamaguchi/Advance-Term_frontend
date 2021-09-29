@@ -96,6 +96,11 @@ export default {
     };
   },
   methods: {
+    rememberInputs() {
+      this.date = this.$store.state.reservationRemain.date,
+      this.time = this.$store.state.reservationRemain.time,
+      this.number = this.$store.state.reservationRemain.number
+    },
     addReservation() {
       if(this.$store.state.auth){
         if(this.date != "" && this.time != "" && this.number != "") {
@@ -118,12 +123,21 @@ export default {
           window.alert("入力が正しくありません");
         }
       } else {
+        this.$store.dispatch("Remain", {
+          shop_id: this.$store.state.shop.data.id,
+          date: this.date,
+          time: this.time,
+          number: this.number,
+        });
         return this.$router.push('/login');
       }
     }
   },
   components: {
     HeaderAuth
+  },
+  async created() {
+    this.rememberInputs()
   }
 }
 </script>

@@ -3,11 +3,14 @@
     <HeaderAuth />
     <div class="container">
       <div class="card">
-        <p>Registration</p>
+        <p class="title">Registration</p>
         <div class="form">
           <input placeholder="Username"  type="text" v-model="name">
+          <p class="error" v-if="this.errors.name != undefined">{{this.errors.name[0]}}</p>
           <input placeholder="Email" type="email" v-model="email">
+          <p class="error" v-if="this.errors.email != undefined">{{this.errors.email[0]}}</p>
           <input placeholder="Password" type="password" v-model="password">
+          <p class="error" v-if="this.errors.password != undefined">{{this.errors.password[0]}}</p>
           <div class="btn">
             <button @click="auth">登録</button>
           </div>
@@ -29,7 +32,12 @@ export default {
     return {
       name: "",
       email: "",
-      password: ""
+      password: "",
+      errors: {
+        'name': "",
+        'email': "",
+        'password': "",
+      }
     };
   },
   components: {
@@ -37,27 +45,29 @@ export default {
   },
   methods: {
     auth() {
-      if(this.name != "" && this.email != "" && this.password != "") {
-        axios
-          .post("https://rocky-wave-13285.herokuapp.com/api/register", {
-            name: this.name,
-            email: this.email,
-            password: this.password
-          })
-          .then(response => {
-            console.log(response);
-            this.$router.replace("/thanks");
-          })
-          .catch(error => {
-            alert(error);
-          });
-        this.$store.dispatch("login", {
+      axios
+        .post("https://rocky-wave-13285.herokuapp.com/api/register", {
+          name: this.name,
           email: this.email,
           password: this.password
+        })
+        .then(response => {
+          console.log(response);
+          this.$router.replace("/thanks");
+        })
+        .catch(error => {
+          const e = error.response.data.errors
+          console.log(e);
+          this.errors.name = e.name;
+          this.errors.email = e.email;
+          this.errors.password = e.password;
+          console.log(this.errors);
+          alert(error);
         });
-      } else {
-        window.alert('入力が正しくありません');
-      }
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password
+      });
     }
   }
 }
@@ -71,7 +81,7 @@ export default {
   border-radius: 5px;
   box-shadow: 1px 1px 5px #9b9b9b;
 }
-.card p {
+.title {
   line-height: 30px;
   width: 80%;
   margin: 0 auto;
@@ -133,5 +143,8 @@ export default {
   background-color: #305dff;
   color: white;
   transition: 0.5s;
+}
+.error {
+  color: red;
 }
 </style>

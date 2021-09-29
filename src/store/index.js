@@ -12,6 +12,7 @@ export default new Vuex.Store({
     auth: "",
     user: "",
     shop: {},
+    reservationRemain: {},
   },
   mutations: {
     auth(state, payload) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     shop(state, payload) {
       state.shop = payload;
+    },
+    remain(state, payload) {
+      state.reservationRemain = payload;
     },
     logout(state, payload) {
       state.auth = payload;
@@ -47,11 +51,19 @@ export default new Vuex.Store({
       commit("auth", responseLogin.data.auth);
       commit("user", responseUser.data.data[0]);
       if (this.state.auth == true) {
-        router.replace("/mypage");
+        if (this.reservationRemain != null) {
+          router.replace(`/detail/${this.state.shop.data.id}`);
+      // this.$router.push({ path: `/detail/${this.$store.state.shop.data.id}` });
+        } else {
+          router.replace("/mypage");
+        }
       }
     },
     async seeDetail(context, data) {
       await context.commit("shop", data);
+    },
+    remain(context, data) {
+      context.commit("remain", data);
     },
     logout({ commit }) {
       axios
