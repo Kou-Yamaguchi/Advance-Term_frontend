@@ -97,9 +97,7 @@ export default {
   },
   methods: {
     rememberInputs() {
-      console.log(this.$store.state);
-      console.log(this.$store.state.remain);
-      console.log(this.$store.state.remain.date);
+      console.log(document.getElementById("today").value);
       document.getElementById("today").value = this.$store.state.remain.date,
       this.time = this.$store.state.remain.time,
       this.number = this.$store.state.remain.number
