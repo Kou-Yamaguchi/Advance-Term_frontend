@@ -62,7 +62,7 @@ export default new Vuex.Store({
     async seeDetail(context, data) {
       await context.commit("shop", data);
     },
-    async remain(context, data) {
+    async remain(context, shop_id, date, time, number) {
       await context.commit("remain", shop_id, date, time, number);
     },
     logout({ commit }) {
