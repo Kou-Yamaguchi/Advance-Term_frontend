@@ -63,7 +63,7 @@ export default new Vuex.Store({
       await context.commit("shop", data);
     },
     async remain(context, data) {
-      await context.commit("remain", data);
+      await context.commit("remain", shop_id, date, time, number);
     },
     logout({ commit }) {
       axios
