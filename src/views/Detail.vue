@@ -96,11 +96,6 @@ export default {
     };
   },
   methods: {
-    // rememberInputs() {
-    //   this.$refs.date.value = this.$store.state.remain.date,
-    //   this.time = this.$store.state.remain.time,
-    //   this.number = this.$store.state.remain.number
-    // },
     addReservation() {
       if(this.$store.state.auth){
         if(this.date != "" && this.time != "" && this.number != "") {
@@ -114,7 +109,8 @@ export default {
             })
             .then((response) => {
               console.log(response);
-              this.$store.dispatch("forget");
+              // this.$store.dispatch("forget");
+              console.log()
               this.$router.push('/done');
             })
             .catch(error => {
@@ -141,6 +137,7 @@ export default {
     this.date = this.$store.state.remain.date,
     this.time = this.$store.state.remain.time,
     this.number = this.$store.state.remain.number
+    this.$store.dispatch("forget")
   }
 }
 </script>
