@@ -139,12 +139,12 @@ export default {
   // async created() {
   //   this.rememberInputs()
   // },
-  mounted: {
-    rememberInputs() {
+  mounted() {
+    // rememberInputs() {
       this.$refs.date.value = this.$store.state.remain.date,
       this.time = this.$store.state.remain.time,
       this.number = this.$store.state.remain.number
-    },
+    // },
   }
 }
 </script>
