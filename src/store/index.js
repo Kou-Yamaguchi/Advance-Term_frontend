@@ -28,7 +28,8 @@ export default new Vuex.Store({
       state.remain = payload;
     },
     forget(state) {
-      state.remain = {};
+      state.remain = null;
+      console.log(state.remain);
     },
     logout(state, payload) {
       state.auth = payload;
