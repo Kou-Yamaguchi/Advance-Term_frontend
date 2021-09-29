@@ -97,7 +97,8 @@ export default {
   },
   methods: {
     rememberInputs() {
-      console.log(this.$store.state.remain.date);
+      console.log(this.$store.state);
+      console.log(this.$store.state.remain);
       console.log(this.store.state.remain.date);
       this.date = this.$store.state.remain.date,
       this.time = this.$store.state.remain.time,
