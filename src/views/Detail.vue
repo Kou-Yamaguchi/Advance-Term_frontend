@@ -126,7 +126,7 @@ export default {
           window.alert("入力が正しくありません");
         }
       } else {
-        this.$store.dispatch("Remain", {
+        this.$store.dispatch("remain", {
           shop_id: this.$store.state.shop.data.id,
           date: this.date,
           time: this.time,
