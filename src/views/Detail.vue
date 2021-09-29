@@ -137,7 +137,7 @@ export default {
     this.date = this.$store.state.remain.date,
     this.time = this.$store.state.remain.time,
     this.number = this.$store.state.remain.number
-    this.$store.dispatch("forget")
+    this.$store.commit("forget")
   }
 }
 </script>
