@@ -51,8 +51,8 @@ export default new Vuex.Store({
       commit("auth", responseLogin.data.auth);
       commit("user", responseUser.data.data[0]);
       if (this.state.auth == true) {
-        console.log(this.remain);
-        if (this.remain != null) {
+        console.log(this.state.remain);
+        if (this.state.remain != null) {
           router.replace(`/detail/${this.state.remain.shop_id}`);
         } else {
           router.replace("/mypage");
