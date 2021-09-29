@@ -97,9 +97,9 @@ export default {
   },
   methods: {
     rememberInputs() {
-      this.date = this.$store.state.reservationRemain.date,
-      this.time = this.$store.state.reservationRemain.time,
-      this.number = this.$store.state.reservationRemain.number
+      this.date = this.$store.state.remain.date,
+      this.time = this.$store.state.remain.time,
+      this.number = this.$store.state.remain.number
     },
     addReservation() {
       if(this.$store.state.auth){
