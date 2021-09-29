@@ -114,7 +114,7 @@ export default {
             })
             .then((response) => {
               console.log(response);
-              this.$store.commit("forget")
+              this.$store.commit("forget");
               this.$router.push('/done');
             })
             .catch(error => {
