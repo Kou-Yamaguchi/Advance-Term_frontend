@@ -19,7 +19,7 @@
       <h1>予約</h1>
       <form @submit.prevent="addReservation">
         <div class="inputs">
-          <input type="date" v-model="date" ref="date">
+          <input type="date" v-model="date" ref="date" :value="value">
           <select name="" id="" v-model="time">
             <option value="" selected>Time</option>
             <option v-for="index in timeList" :key="index">{{ index }}</option>
