@@ -19,7 +19,7 @@
       <h1>予約</h1>
       <form @submit.prevent="addReservation">
         <div class="inputs">
-          <input type="date" v-model="date">
+          <input type="date" v-model="date" id="date">
           <select name="" id="" v-model="time">
             <option value="" selected>Time</option>
             <option v-for="index in timeList" :key="index">{{ index }}</option>
@@ -99,8 +99,8 @@ export default {
     rememberInputs() {
       console.log(this.$store.state);
       console.log(this.$store.state.remain);
-      console.log(this.store.state.remain.date);
-      this.date = this.$store.state.remain.date,
+      console.log(this.$store.state.remain.date);
+      document.getElementById("today").value = this.$store.state.remain.date,
       this.time = this.$store.state.remain.time,
       this.number = this.$store.state.remain.number
     },
